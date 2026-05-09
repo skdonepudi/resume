@@ -16,13 +16,10 @@
 
   body { font-size: 9.5pt; line-height: 1.6; }
 
-  /* About is shown on web; hidden on PDF to free up space */
-  .section-about { display: none !important; }
-
   .page {
     max-width: 100%;
     min-height: auto;
-    grid-template-columns: 185px 1fr;
+    grid-template-columns: 210px 1fr;
   }
 
   .sidebar { padding: 0 18px 0 0; border-right: 1px solid #ddd; }
@@ -67,13 +64,14 @@
   .exp-bullets { gap: 3px; margin-top: 6px; }
   .exp-bullets li { font-size: 9pt; line-height: 1.55; }
 
-  /* Projects */
-  .project-grid { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-  .project-entry { background: transparent; padding: 8px 10px; }
+  /* Projects — single column list in PDF */
+  .project-grid { grid-template-columns: 1fr; gap: 6px; margin-bottom: 0; }
+  .project-entry { background: transparent; padding: 6px 0; border-left: none; border-right: none; border-radius: 0; border-top: none; border-bottom: 1px solid #e8e8e8; }
+  .project-entry:last-child { border-bottom: none; }
   .project-name { font-size: 11.5px; }
-  .project-desc { font-size: 9pt; margin-bottom: 5px; line-height: 1.55; }
+  .project-desc { font-size: 9pt; margin-bottom: 4px; line-height: 1.5; }
   .project-link { font-size: 9.5px; }
-  .more-link { font-size: 10px; margin-top: 3px; }
+  .more-link { display: none !important; }
 
   /* Education */
   .edu-degree { font-size: 12px; }
