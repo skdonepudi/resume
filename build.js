@@ -63,7 +63,12 @@ async function buildPDF(html) {
     const page = await browser.newPage();
 
     console.log('Opening puppeteer...');
+    // Set viewport to A4 content width so print layout matches PDF dimensions
+    // A4 at 96dpi = 794×1123px; minus 0.4in margins (38px each side) = 718×1046px content
+    await page.setViewport({ width: 718, height: 1046 });
     await page.setContent(html, { waitUntil: 'networkidle0' });
+
+    await page.emulateMediaType('print');
 
     console.log('Generating PDF...');
     const pdf = await page.pdf(PDF_OPTIONS);

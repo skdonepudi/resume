@@ -12,18 +12,41 @@
     --tag-text: #444;
   }
 
-  @page { size: A4; margin: 0.38in 0.42in; }
+  @page { size: A4; margin: 0.35in 0.4in; }
 
-  body { font-size: 9.5pt; line-height: 1.6; }
+  body { font-size: 9pt; line-height: 1.5; }
 
   .page {
+    display: flex;
+    align-items: stretch;
     max-width: 100%;
-    min-height: auto;
-    grid-template-columns: 210px 1fr;
+    min-height: 100vh;
   }
 
-  .sidebar { padding: 0 18px 0 0; border-right: 1px solid #ddd; }
-  .main { padding: 0 0 0 24px; }
+  /* Use ::before with inset:0 — computed-height absolute element forces full background paint */
+  .sidebar {
+    flex: 0 0 200px;
+    min-width: 0;
+    padding: 0 16px 0 0;
+    border-right: 1px solid #ddd;
+    background: transparent;
+    position: relative;
+  }
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #f7f7f7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    z-index: 0;
+  }
+  .sidebar > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .main { flex: 1; min-width: 0; padding: 0 0 0 22px; }
 
   a { color: inherit !important; border: none !important; }
   a[href]:after { content: none !important; }
@@ -32,52 +55,55 @@
   .print-only { display: inline !important; }
 
   /* Profile */
-  .profile { margin-bottom: 14px; }
-  .name { font-size: 17px; }
-  .role { font-size: 9.5px; }
+  .profile { margin-bottom: 12px; }
+  .name { font-size: 16px; }
+  .role { font-size: 9px; }
 
   /* Contact & socials */
-  .contact { margin-bottom: 10px; gap: 4px; }
-  .contact-row { font-size: 10.5px; }
-  .socials { margin-bottom: 16px; gap: 3px; }
-  .social-link { font-size: 10.5px; }
+  .contact { margin-bottom: 8px; gap: 3px; }
+  .contact-row { font-size: 10px; }
+  .socials { margin-bottom: 12px; gap: 2px; }
+  .social-link { font-size: 10px; }
 
   /* Sidebar sections */
-  .sidebar-section { margin-bottom: 13px; }
-  .sidebar-section-title { font-size: 8px; padding-bottom: 5px; margin-bottom: 8px; }
-  .skill-group { margin-bottom: 8px; }
-  .skill-cat { font-size: 9px; margin-bottom: 4px; }
-  .tag { font-size: 9.5px; padding: 1px 6px; }
-  .lang-row { padding: 3px 0; font-size: 10.5px; }
-  .lang-level { font-size: 9.5px; }
+  .sidebar-section { margin-bottom: 10px; }
+  .sidebar-section-title { font-size: 7.5px; padding-bottom: 4px; margin-bottom: 6px; }
+  .skill-group { margin-bottom: 6px; }
+  .skill-cat { font-size: 8.5px; margin-bottom: 3px; }
+  .tag { font-size: 9px; padding: 1px 5px; }
+  .lang-row { padding: 2px 0; font-size: 10px; }
+  .lang-level { font-size: 9px; }
 
   /* Section headers */
-  .section { margin-bottom: 14px; }
-  .section-title { font-size: 8px; padding-bottom: 5px; margin-bottom: 12px; }
+  .section { margin-bottom: 10px; }
+  .section-title { font-size: 7.5px; padding-bottom: 4px; margin-bottom: 8px; }
+
+  /* About */
+  .about-text { font-size: 8.5pt; line-height: 1.5; }
 
   /* Experience */
-  .exp-entry { padding-bottom: 12px; margin-bottom: 12px; }
+  .exp-entry { padding-bottom: 9px; margin-bottom: 9px; }
   .exp-entry:last-child { padding-bottom: 0; margin-bottom: 0; }
-  .exp-role { font-size: 13px; }
-  .exp-company { font-size: 11px; }
-  .exp-period { font-size: 10px; }
-  .exp-bullets { gap: 3px; margin-top: 6px; }
-  .exp-bullets li { font-size: 9pt; line-height: 1.55; }
+  .exp-role { font-size: 12.5px; }
+  .exp-company { font-size: 10.5px; }
+  .exp-period { font-size: 9.5px; }
+  .exp-bullets { gap: 2px; margin-top: 5px; }
+  .exp-bullets li { font-size: 8.5pt; line-height: 1.45; }
 
   /* Projects — single column list in PDF */
-  .project-grid { grid-template-columns: 1fr; gap: 6px; margin-bottom: 0; }
-  .project-entry { background: transparent; padding: 6px 0; border-left: none; border-right: none; border-radius: 0; border-top: none; border-bottom: 1px solid #e8e8e8; }
+  .project-grid { grid-template-columns: 1fr; gap: 5px; margin-bottom: 0; }
+  .project-entry { background: transparent; padding: 5px 0; border-left: none; border-right: none; border-radius: 0; border-top: none; border-bottom: 1px solid #e8e8e8; }
   .project-entry:last-child { border-bottom: none; }
-  .project-name { font-size: 11.5px; }
-  .project-desc { font-size: 9pt; margin-bottom: 4px; line-height: 1.5; }
-  .project-link { font-size: 9.5px; }
+  .project-name { font-size: 11px; }
+  .project-desc { font-size: 8.5pt; margin-bottom: 3px; line-height: 1.45; }
+  .project-link { font-size: 9px; }
   .more-link { display: none !important; }
 
   /* Education */
-  .edu-degree { font-size: 12px; }
-  .edu-inst { font-size: 11px; }
-  .edu-period { font-size: 10px; }
+  .edu-degree { font-size: 11.5px; }
+  .edu-inst { font-size: 10.5px; }
+  .edu-period { font-size: 9.5px; }
 
   /* Footer */
-  .resume-footer { margin-top: 14px; padding-top: 10px; font-size: 9.5px; }
+  .resume-footer { margin-top: 10px; padding-top: 8px; font-size: 9px; }
 }
