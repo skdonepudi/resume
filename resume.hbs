@@ -1,352 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/Person">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://sandeepdonepudi.in/favicon.ico" type="image/x-icon">
-    <title>{{#resume.basics}}{{name}}{{/resume.basics}} - Résumé</title>
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC|Nunito+Sans:400,700&display=swap" rel="stylesheet">
+    <title>{{#resume.basics}}{{name}} — Résumé{{/resume.basics}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>{{{css}}}</style>
   </head>
 
-  <body itemscope itemtype="http://schema.org/Person">
-    
-    <div class="container">
-      <section class="row">
-        <div class="card-wrapper">
-          {{#resume.basics}}
-          <div class="card">
-            <div class="profile-card">
-                <!--<div class="profile-pic">
-                  <img class="media-object img-circle center-block"  data-src="holder.js/100x100"
-                    alt="{{name}}" src="{{picture}}" itemprop="image">
-                </div>
-                -->
-                <div class="contact-details">
-                  <div class="name-and-profession">
-                    <h3 class="text-bolder name" itemprop="name"> {{name}}</h3>
-                    <div class="text-muted job" itemprop="jobTitle">{{label}}</div>
-                  </div>
+  <body>
+    <div class="page">
 
-                  {{#if address}}
-                    <div class="text-muted info" itemprop="address" style="font-size:0.9em">{{address}}</div>
-                  {{/if}}
+      <!-- ─── SIDEBAR ─── -->
+      <aside class="sidebar">
+        {{#resume.basics}}
 
-                  {{#if email}}
-                    <div class="detail">
-                      <span class="info">
-                        <a href="mailto:{{email}}" class="link-disguise" itemprop="email" target="_blank">{{email}}</a>
-                      </span>
-                    </div>
-                  {{/if}}
+        <div class="profile">
+          <h1 class="name" itemprop="name">{{name}}</h1>
+          <p class="role" itemprop="jobTitle">{{label}}</p>
+        </div>
 
-                  {{#if phone}}
-                    <div class="detail">
-                      <a href="tel://{{phone}}" class="link-disguise info" itemprop="telephone" target="_blank">
-                        {{phone}}
-                      </a>
-                    </div>
-                  {{/if}}
+        <div class="contact">
+          {{#if email}}
+          <a href="mailto:{{email}}" class="contact-row" itemprop="email">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67zM22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+            <span>{{email}}</span>
+          </a>
+          {{/if}}
+          {{#if website}}
+          <a href="{{website}}" class="contact-row" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>sandeepdonepudi.in</span>
+          </a>
+          {{/if}}
+          {{#if address}}
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            <span>{{address}}</span>
+          </div>
+          {{/if}}
+        </div>
 
-                  {{#if location}}
-                    <div class="detail">
-                      {{#location}}
-                        <span class="info">
-                          {{city}}, {{region}},
-                          {{countryCode}}
-                        </span>
-                      {{/location}}
-                    </div>
-                  {{/if}}
-                </div>
+        <div class="socials">
+          {{#each profiles}}
+          <a href="{{url}}" class="social-link" target="_blank" rel="noopener noreferrer" title="{{network}}">
+            {{{toSocialSvg network}}}
+            <span>{{username}}</span>
+          </a>
+          {{/each}}
+        </div>
 
-              <div class="social-links">
-                {{#profiles}}
-                  <a class="social-link icon" href="{{url}}" target="_blank">
-                    <span class="iconify" data-icon="{{toSocialIcon network}}"></span>
-                    <!--<span class="social-link-text print-only">{{username}}</span>-->
-                  </a>
-                {{/profiles}}
-              </div>
+        {{/resume.basics}}
+
+        {{#if resume.skills}}
+        <div class="sidebar-section">
+          <h2 class="sidebar-section-title">Skills</h2>
+          {{#each resume.skills}}
+          <div class="skill-group">
+            <span class="skill-cat">{{name}}</span>
+            <div class="skill-tags">
+              {{#each keywords}}<span class="tag">{{this}}</span>{{/each}}
             </div>
           </div>
-          {{/resume.basics}}
-
+          {{/each}}
         </div>
-      </section>
+        {{/if}}
 
-      <section class="row page">
-        <div class="card-wrapper">
-          <div class="card background-card">
+        {{#if resume.languages}}
+        <div class="sidebar-section">
+          <h2 class="sidebar-section-title">Languages</h2>
+          {{#each resume.languages}}
+          <div class="lang-row">
+            <span class="lang-name">{{language}}</span>
+            <span class="lang-level">{{fluency}}</span>
+          </div>
+          {{/each}}
+        </div>
+        {{/if}}
 
-            <h4 id="about"></span> <span class="title">About</span> </h4>
-            <div class="card-nested" itemprop="description">
-              <p> {{breaklines resume.basics.summary}} </p>
+      </aside>
+
+      <!-- ─── MAIN ─── -->
+      <main class="main">
+
+        {{#resume.basics}}
+        {{#if summary}}
+        <section class="section">
+          <h2 class="section-title">About</h2>
+          <p class="about-text" itemprop="description">{{summary}}</p>
+        </section>
+        {{/if}}
+        {{/resume.basics}}
+
+        {{#if resume.work}}
+        <section class="section">
+          <h2 class="section-title">Experience</h2>
+          {{#each resume.work}}
+          <div class="exp-entry">
+            <div class="exp-meta">
+              <div class="exp-left">
+                <span class="exp-role">{{position}}</span>
+                <span class="exp-company">
+                  {{#if website}}<a href="{{website}}" target="_blank" rel="noopener">{{company}}</a>{{else}}{{company}}{{/if}}
+                  <span class="exp-location">· {{location}}</span>
+                </span>
+              </div>
+              <span class="exp-period">{{startDate}} – {{#if endDate}}{{endDate}}{{else}}Present{{/if}}</span>
             </div>
+            {{#if highlights}}
+            <ul class="exp-bullets">
+              {{#each highlights}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+            {{/if}}
+          </div>
+          {{/each}}
+        </section>
+        {{/if}}
 
-            <div id="work-projects-group">
-              {{#if resume.projects}}
-              <div id="projects">
-                <h4><span class="title">Projects</span></h4>
-                <div class="list-unstyled projects">
-                  <div class="project-table">
-                  {{#each resume.projects}}
-                    <li class="card-nested {{domClasses}}">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm" itemprop="award">
-                          <strong>{{displayName}}</strong>&nbsp
-                          {{#if githubUrl}}
-                            <a href="{{githubUrl}}" class='icon' target="_blank">
-                              <span class="iconify" data-icon="{{toSocialIcon 'github'}}"></span>
-                            </a>
-                          {{/if}}
-                          {{#if website}}
-                            <a href="{{website}}" class='icon' target="_blank">
-                              <span class="iconify" data-icon="{{toSocialIcon 'link'}}"></span>
-                            </a>
-                          {{/if}}
-                        </p>
-                        <p class="text-muted">
-                          <small> {{summary}} </small>
-                        </p>
-                        {{#if githubUrl}}
-                          <p class="github-stars">
-                            <span class="iconify" data-icon="ri:star-fill"></span>
-                            <span class="stars" data-gh-api="{{getGithubApi githubUrl}}">{{stars}}</span>
-                          </p>
-                        {{/if}}
-                      </div>
-                    </li>
-                  {{/each}}
-                  </div>
-                  {{#if resume.basics.projects_url}}
-                    <li class="card-nested text-muted">
-                      <a href="{{resume.basics.projects_url}}" target="_blank">More Projects...</a>
-                    </li>
-                  {{/if}}
-                  <div class='px10'></div>
+        {{#if resume.projects}}
+        <section class="section">
+          <h2 class="section-title">Projects</h2>
+          <div class="project-grid">
+            {{#each resume.projects}}
+            <div class="project-entry">
+              <div class="project-header">
+                <span class="project-name">{{displayName}}</span>
+                <div class="project-links">
+                  {{#if githubUrl}}<a href="{{githubUrl}}" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>{{/if}}
+                  {{#if website}}<a href="{{website}}" target="_blank" rel="noopener" class="project-link">Live ↗</a>{{/if}}
                 </div>
               </div>
-              {{/if}}
-
-              <div id="work-experience">
-                <h4> <span class="title">Work Experience</span> </h4>
-                <ul class="list-unstyled">
-                  {{#each resume.work}}
-                    <li class="card-nested relax">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm">
-                          <strong>{{#if website}}<a href="{{website}}" target="_blank">{{company}}</a>{{else}}{{company}}{{/if}}</strong>
-                          <span class="text-muted" style="margin-left: 0.3em">{{position}}</span>
-                        </p>
-                        <p class="text-muted">
-                          <small>
-                            <span class="space-right"> {{startDate}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}} | {{location}}</span>
-                          </small>
-                        </p>
-                        <p>{{summary}}</p>
-                        {{#if highlights}}
-                          <ul class='highlight'>
-                            {{#each highlights}}
-                              <li> {{.}} </li>
-                            {{/each}}
-                          </ul>
-                        {{/if}}
-                      </div>
-
-                    </li>
-                  {{/each}}
-                </ul>
-              </div>
+              <p class="project-desc">{{summary}}</p>
+              {{#if primaryLanguage}}<span class="tag">{{primaryLanguage}}</span>{{/if}}
             </div>
+            {{/each}}
+          </div>
+          {{#if resume.basics.projects_url}}
+          <a href="{{resume.basics.projects_url}}" target="_blank" rel="noopener" class="more-link">More projects →</a>
+          {{/if}}
+        </section>
+        {{/if}}
 
-            <h4 id="skills"><span class="title">Stacks</span> </h4>
-            <div class="card-nested" itemprop="description">
-              <div class="skill-table">
-                {{#each resume.skills}}
-                    <div class='name'>{{name}}</div> 
-                    <div>{{join keywords}}</div>
-                {{/each}}
+        {{#if resume.education}}
+        <section class="section">
+          <h2 class="section-title">Education</h2>
+          {{#each resume.education}}
+          <div class="edu-entry">
+            <div class="edu-meta">
+              <div class="edu-left">
+                <span class="edu-degree">{{studyType}}, {{area}}</span>
+                <span class="edu-inst">{{institution}}</span>
               </div>
-            </div>
-            <div class='px10'></div>
-
-            <div id="education">
-              <h4><span class="title">Education</span></h4>
-              <ul class="list-unstyled">
-                {{#each resume.education}}
-                  <li class="card-nested">
-                    <div class="content has-sidebar">
-                      <p class="clear-margin-sm">
-                        <strong>{{#if area}} {{area}}, {{/if}}{{studyType}}</strong>,&nbsp;
-                        {{institution}}
-                      </p>
-                      <p class="text-muted clear-margin-sm">
-                        <small>
-                          {{startDate}} - {{#if endDate}} {{endDate}} {{else}} Currently Pursuing {{/if}}
-                        </small>
-                      </p>
-                      <div>{{description}}</div>
-                      <i>{{gpa}}</i>
-                      <div class="space-top labels">
-                        {{#courses}} <span class="label label-keyword">{{.}}</span> {{/courses}}
-                      </div>
-                    </div>
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-
-
-            {{#if resume.publications}}
-            <h4 id="publications"><span class="title">Talks</span> </h4>
-            <ul class="list-unstyled">
-              {{#each resume.publications}}
-                <li class="card-nested" style="margin-bottom: 0.5em">
-                  <div class="content has-sidebar">
-                    <p class="clear-margin-sm">
-                      <strong>{{#if website}}<a href="{{website}}" target="_blank">{{name}}</a>{{else}}{{name}}{{/if}}</strong>,&nbsp;
-                      {{publisher}}
-                    </p>
-                    <p class="text-muted clear-margin-sm">
-                      <small> {{releaseDate}} {{dateNote}}</small>
-                      <small>{{#if slides}},&nbsp;<a href="{{slides}}" target="_blank">Slides</a>{{/if}}</small>
-                    </p>
-                    <p class="clear-margin">{{summary}}</p>
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-            {{/if}}
-
-            {{#if resume.awards}}
-            <h4 id="awards"><span class="title">Awards</span></h4>
-            <ul class="list-unstyled">
-              {{#each resume.awards}}
-                <li class="card-nested">
-                  <div class="content has-sidebar">
-                    <p class="clear-margin-sm" itemprop="award">
-                      <strong>{{title}}</strong>,&nbsp;
-                      {{awarder}}
-                    </p>
-                    <p class="text-muted clear-margin-sm">
-                      <small> {{date}} </small>
-                    </p>
-                    {{#if summary}}<p> {{summary}} </p>{{/if}}
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-            {{/if}}
-
-            {{#if resume.volunteer}}
-            <h4 id="volunteer-work"><span class="title">Volunteer Work</span> </h4>
-            <ul class="list-unstyled">
-              {{#each resume.volunteer}}
-                <li class="card-nested">
-                  <div class="content has-sidebar">
-                    <p class="clear-margin-sm">
-                      <strong>{{position}}</strong>,&nbsp;
-                      {{organization}}
-                    </p>
-                    <p class="text-muted">
-                      <small>
-                        {{startDate}} - {{#if endDate}} {{endDate}} {{else}} Present {{/if}}
-                      </small>
-                    </p>
-                    <p>{{summary}}</p>
-                    <ul>
-                      {{#each highlights}}
-                        <li> {{.}} </li>
-                      {{/each}}
-                    </ul>
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-            {{/if}}
-
-            {{#if resume.interests}}
-            <h4 id="interests"><span class="title">Interests</span> </h4>
-            <ul class="list-unstyled">
-              {{#each resume.interests}}
-                <li class="card-nested">
-                  <p>
-                    <strong>{{name}}</strong>
-                  </p>
-
-                  <div class="space-top labels">
-                    {{#keywords}}
-                      <span class="label label-keyword">{{.}}</span>
-                    {{/keywords}}
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-            {{/if}}
-
-            {{#if resume.references}}
-            <h4 id="references"><span class="title">References</span> </h4>
-            <ul class="list-unstyled">
-              {{#each resume.references}}
-                <li class="card-nested">
-                  <p>
-                    <strong>{{name}}</strong>
-                  </p>
-                  <blockquote class="quote">
-                    <p class="clear-margin">{{reference}}</p>
-                  </blockquote>
-                </li>
-              {{/each}}
-            </ul>
-            {{/if}}
-
-            {{#if resume.languages}}
-            <h4 id="languages"><span class="title">Languages</span> </h4>
-            <p class="card-nested">
-              {{#each resume.languages}}
-                <span class="enumeration"><strong>{{language}}</strong> ({{fluency}})</span>
-              {{/each}}
-            </p>
-            {{/if}}
-
-            <div style="text-align:center">
-              <div class="detail no-print" style="font-size:1.5rem;margin-top:2rem;">
-                <a href="https://resume.sandeepdonepudi.in/resume.pdf" class="info" itemprop="pdf" target="_blank">
-                  PDF Version
-                </a>
-              </div>
-               <div class="detail print-only" style="font-size:1.5rem;margin-top:2rem;" >
-                <a href="https://resume.sandeepdonepudi.in" class="info" itemprop="pdf" target="_blank">
-                  Online Version
-                </a>
-              </div>
-              <div style="opacity:0.7; font-size:1.2rem;margin-top:1rem;">Last updated at {{getBuildDate ''}}</div>
+              <span class="edu-period">{{startDate}} – {{endDate}}</span>
             </div>
           </div>
-        </div>
-      </section>
+          {{/each}}
+        </section>
+        {{/if}}
+
+        <footer class="resume-footer">
+          <span class="no-print"><a href="https://resume.sandeepdonepudi.in/resume.pdf">PDF version ↓</a></span>
+          <span class="print-only">resume.sandeepdonepudi.in</span>
+          <span>Updated {{getBuildDate ''}}</span>
+        </footer>
+
+      </main>
     </div>
-
-    
-    <script>
-      async function updateStars(){
-        await Promise.all(
-          Array.from(document.querySelectorAll('[data-gh-api]'))
-            .map(async (e) => {
-              const api = e.dataset.ghApi
-              const r = await fetch(api)
-              const json = await r.json()
-              if (json.stargazers_count)
-                e.innerText = json.stargazers_count
-              console.info(`${api} - ${json.stargazers_count}`)
-            })
-        )
-      }
-      window.addEventListener('load', updateStars)
-    </script>
   </body>
 </html>

@@ -1,631 +1,760 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/Person">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://sandeepdonepudi.in/favicon.ico" type="image/x-icon">
-    <title>Sandeep Donepudi - Résumé</title>
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC|Nunito+Sans:400,700&display=swap" rel="stylesheet">
-    <style>.clear-margin {
+    <title>Sandeep Donepudi — Résumé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>:root {
+  --bg: #ffffff;
+  --bg-subtle: #f8f8f8;
+  --sidebar-bg: #f5f5f5;
+  --text: #111111;
+  --text-muted: #606060;
+  --text-dim: #9a9a9a;
+  --border: #e6e6e6;
+  --brand: #e6590a;
+  --tag-bg: #ebebeb;
+  --tag-text: #505050;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0f0f;
+    --bg-subtle: #181818;
+    --sidebar-bg: #141414;
+    --text: #eeeeee;
+    --text-muted: #909090;
+    --text-dim: #606060;
+    --border: #2c2c2c;
+    --brand: #f07030;
+    --tag-bg: #242424;
+    --tag-text: #aaaaaa;
+  }
+}
+/* mixins.less — Bootstrap dependency removed */
+/* utilities.less — replaced by base.less */
+/* ─── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
-.space-top {
-  margin-top: 10px;
-}
-.space-right {
-  margin-right: 10px;
-}
-.icon-left {
-  margin-right: 5px;
-}
-.icon-right {
-  margin-left: 5px;
-}
-.labels {
-  word-spacing: 5px;
-  line-height: 2;
-}
-.label-keyword {
-  display: inline-block;
-  background: #7eb0db;
-  color: white;
-  font-size: 0.9em;
-  padding: 5px;
-  border: 1px solid #357ebd;
-}
-.link-disguise {
-  color: inherit;
-}
-.link-disguise:hover {
-  color: inherit;
-}
-.clear-margin-sm {
-  margin-bottom: 0;
+html {
+  font-size: 13.5px;
 }
 body {
-  font-family: 'Nunito Sans', "Helvetica Neue", Helvetica, Arial, 'Noto Sans SC', sans-serif;
-  color: #333;
-  font-size: 16px;
-}
-.text-bolder {
-  font-weight: bold;
-}
-.enumeration:last-child:after {
-  content: '' !important;
-}
-.name-and-profession .name {
-  font-size: 2.2rem;
-  margin-bottom: 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.name-and-profession .job {
-  margin-bottom: 0.5rem;
-}
-@media only screen {
-  .container {
-    display: grid;
-    grid-template-columns: auto 15fr 50fr auto;
-  }
-  .container .page {
-    max-width: 50em;
-  }
-}
-@media (max-width: 768px) {
-  ul {
-    padding-left: 25px;
-  }
-  .container {
-    display: block;
-  }
-  .card {
-    padding: 1em !important;
-  }
-  .background-details {
-    display: block;
-  }
-  .background-details .icon {
-    max-width: inherit;
-    min-width: inherit;
-    text-align: left;
-  }
-  .background-details .icon,
-  .background-details .info {
-    display: block;
-    padding: 10px 0;
-  }
-  .background-details .title {
-    display: none;
-  }
-  .card-nested {
-    padding: 5px 0;
-  }
-}
-.profile-card {
-  width: 100%;
-  text-align: left;
-}
-.profile-pic {
-  display: block;
-  padding: 1rem;
-}
-.profile-pic img {
-  width: 100px;
-  height: 100px;
-}
-.contact-details .detail {
-  display: block;
-  line-height: 2;
-}
-.contact-details .detail .icon {
-  padding-right: 7px;
-  color: #888;
-}
-.contact-details .detail .info {
-  font-size: 0.8em;
-}
-.social-links {
-  margin-top: 1.5rem;
-}
-.social-link {
-  padding: 0 0.6rem;
-  color: inherit;
-  opacity: 0.7;
-}
-.social-link:hover,
-.social-link:focus {
-  opacity: 1;
-}
-.social-link:first-child {
-  padding-left: 0;
-}
-.social-link:last-child {
-  padding-right: 0;
-}
-.social-link > * {
-  vertical-align: middle;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 a {
   color: inherit;
   text-decoration: none;
 }
-a:not(.icon) {
-  border-bottom: 1px dashed #0005;
+/* ─── Page grid ──────────────────────────────────────────── */
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
 }
-a:hover,
-a:focus {
-  text-decoration: none;
+/* ─── Sidebar ────────────────────────────────────────────── */
+.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 40px 22px 40px 28px;
 }
-.background-card h4 {
-  line-height: 1.2;
-  font-size: 1em;
+.profile {
+  margin-bottom: 22px;
 }
-.background-card h4 .title {
-  background: black !important;
-  color: white !important;
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+.role {
+  font-size: 10.5px;
+  color: var(--brand);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+/* Contact */
+.contact {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.contact-row:hover {
+  color: var(--text);
+}
+.contact-row svg {
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+/* Socials */
+.socials {
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  padding: 2px 0;
+  transition: color 0.15s;
+}
+.social-link:hover {
+  color: var(--text);
+}
+.social-link svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+/* Sidebar section block */
+.sidebar-section {
+  margin-bottom: 20px;
+}
+.sidebar-section-title {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 7px;
+  margin-bottom: 12px;
+}
+/* Skills */
+.skill-group {
+  margin-bottom: 10px;
+}
+.skill-cat {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.tag {
   display: inline-block;
-  padding: 2px 12px 0 3px;
-  font-weight: bold;
-}
-.background-card h4:not(:first-child) {
-  margin-top: 2em;
-}
-.content {
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 11px;
   line-height: 1.5;
 }
-.card {
-  background: white;
-  padding: 2em 3.5em;
+/* Languages */
+.lang-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 11.5px;
 }
-.card-nested {
-  padding: 0.8rem 0 0.8rem 2rem;
+.lang-row:last-child {
+  border-bottom: none;
 }
-.card-nested.relax {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.lang-name {
+  color: var(--text);
+  font-weight: 500;
 }
-.card-wrapper {
-  padding: 5px;
+.lang-level {
+  color: var(--text-dim);
+  font-size: 10.5px;
 }
-.enumeration:not(:last-child):after {
-  content: ", ";
+/* ─── Main ───────────────────────────────────────────────── */
+.main {
+  padding: 40px 44px 40px 40px;
 }
-.enumeration:last-child:after {
-  content: ".";
+.section {
+  margin-bottom: 28px;
 }
-.github-stars {
-  opacity: 0.6;
-  font-size: 0.9em;
+.section-title {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 7px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.projects {
-  padding: 1rem 0;
+.section-title::before {
+  content: '';
+  display: block;
+  width: 2.5px;
+  height: 11px;
+  background: var(--brand);
+  border-radius: 2px;
+  flex-shrink: 0;
 }
-.projects .text-muted {
-  margin-bottom: 0.4rem;
+/* About */
+.about-text {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.75;
 }
-.projects .icon {
-  margin-right: 2px;
+/* ─── Experience ─────────────────────────────────────────── */
+.exp-entry {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
 }
-.px10 {
-  height: 10px;
+.exp-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
-.skill-table {
-  display: grid;
-  grid-template-columns: max-content auto;
-  grid-gap: 1.5rem 1rem;
+.exp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 7px;
 }
-.skill-table .name {
-  font-weight: bold;
-  text-align: right;
+.exp-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.project-table {
+.exp-role {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.exp-company {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.exp-company a {
+  color: inherit;
+  border-bottom: 1px dashed var(--border);
+  transition: color 0.15s, border-color 0.15s;
+}
+.exp-company a:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+.exp-location {
+  opacity: 0.75;
+}
+.exp-period {
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  font-feature-settings: 'tnum';
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.exp-bullets li {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  padding-left: 14px;
+  position: relative;
+}
+.exp-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 2px;
+  color: var(--brand);
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+/* ─── Projects ───────────────────────────────────────────── */
+.project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem 1rem;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.project-entry {
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg-subtle);
+}
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.project-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.project-links {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.project-link {
+  font-size: 10.5px;
+  color: var(--text-dim);
+  transition: color 0.15s;
+}
+.project-link:hover {
+  color: var(--brand);
+}
+.project-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 7px;
+}
+.more-link {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  transition: color 0.15s;
+  display: inline-block;
+  margin-top: 4px;
+}
+.more-link:hover {
+  color: var(--brand);
+}
+/* ─── Education ──────────────────────────────────────────── */
+.edu-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.edu-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.edu-degree {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.edu-inst {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.edu-period {
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+/* ─── Footer ─────────────────────────────────────────────── */
+.resume-footer {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+.resume-footer a {
+  color: var(--text-dim);
+  transition: color 0.15s;
+}
+.resume-footer a:hover {
+  color: var(--brand);
+}
+.no-print {
+  display: inherit;
 }
 .print-only {
   display: none;
 }
-@media only screen and (max-width: 768px) {
-  .profile-card,
-  .contact-details,
-  .profile-pic {
-    display: block;
-    text-align: center;
-  }
-  .card-nested {
-    padding-left: 0;
-  }
-  .project-table {
-    display: block;
-  }
-}
-.card-skills {
-  position: relative;
-}
-.skill-info {
-  margin-left: 20px;
-}
-@media (max-width: 768px) {
-  .quote {
-    font-size: inherit;
-  }
-}
-@media print {
-  .name-and-profession .name {
-    margin-top: -2rem;
-  }
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 680px) {
   .page {
-    margin-top: -4rem;
+    grid-template-columns: 1fr;
   }
-  .social-links {
-    margin-top: 0.5rem;
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 28px 20px;
+  }
+  .main {
+    padding: 28px 20px;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .exp-meta {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+/* cards.less — replaced by base.less */
+/* skills.less — replaced by base.less */
+/* references.less — unused */
+@media print {
+  :root {
+    --bg: #fff;
+    --bg-subtle: #fff;
+    --sidebar-bg: #f7f7f7;
+    --text: #111;
+    --text-muted: #444;
+    --text-dim: #777;
+    --border: #ddd;
+    --brand: #c44e08;
+    --tag-bg: #eee;
+    --tag-text: #444;
+  }
+  @page {
+    margin: 0.45in 0.4in;
   }
   body {
-    font-size: 10pt;
+    font-size: 9.5pt;
+  }
+  .page {
+    max-width: 100%;
+    min-height: auto;
+    grid-template-columns: 195px 1fr;
+  }
+  .sidebar {
+    padding: 0 18px 0 0;
+    border-right: 1px solid #ddd;
+  }
+  .main {
+    padding: 0 0 0 24px;
+  }
+  a {
+    color: inherit !important;
+    border: none !important;
   }
   a[href]:after {
     content: none !important;
   }
-  .pagebreak {
-    page-break-before: always;
-  }
-  .card {
-    border: 0;
-    padding: 0;
-  }
-  .text-muted {
-    color: #777 !important;
-  }
-  .text-muted * {
-    color: inherit !important;
-  }
-  .container {
-    max-width: 100%;
-    width: 100%;
-  }
-  .contact-details .detail .icon {
-    color: #888 !important;
-  }
-  .labels {
-    display: inline;
-  }
-  .skill-info {
-    margin-left: 0;
-  }
-  .profile-card {
-    text-align: center;
+  .no-print {
+    display: none !important;
   }
   .print-only {
-    display: inherit;
+    display: inline !important;
   }
-  .no-print {
-    display: none;
+  .section {
+    margin-bottom: 14px;
   }
-  .project-table {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0.8rem 1rem;
+  .section-title {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
   }
-  .highlight {
-    margin-top: -0.3rem;
+  .exp-entry {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
-  blockquote {
-    font-size: 100%;
+  .exp-bullets li {
+    font-size: 9pt;
   }
-  .card-nested {
-    padding: 0.1rem 0 0.1rem 1rem;
+  .about-text {
+    font-size: 9pt;
   }
-  .card-nested.relax {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
   }
-  .skill-table {
-    grid-gap: 0.8rem 0.5rem;
+  .project-entry {
+    background: transparent;
+    padding: 8px 10px;
   }
-  .background-card h4:not(:first-child) {
-    margin-top: 1em;
+  .project-desc {
+    font-size: 9pt;
   }
-  #work-projects-group {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 2fr 4fr;
-    page-break-after: always;
+  .profile {
+    margin-bottom: 14px;
+  }
+  .contact {
+    margin-bottom: 10px;
+  }
+  .socials {
+    margin-bottom: 16px;
+  }
+  .sidebar-section {
+    margin-bottom: 14px;
+  }
+  .lang-row {
+    padding: 3px 0;
   }
 }
 </style>
   </head>
 
-  <body itemscope itemtype="http://schema.org/Person">
-    
-    <div class="container">
-      <section class="row">
-        <div class="card-wrapper">
-          <div class="card">
-            <div class="profile-card">
-                <!--<div class="profile-pic">
-                  <img class="media-object img-circle center-block"  data-src="holder.js/100x100"
-                    alt="Sandeep Donepudi" src="//www.gravatar.com/avatar/4d9333af3da10caf907867d775a0ed60?s&#x3D;100&amp;r&#x3D;pg&amp;d&#x3D;mm" itemprop="image">
-                </div>
-                -->
-                <div class="contact-details">
-                  <div class="name-and-profession">
-                    <h3 class="text-bolder name" itemprop="name"> Sandeep Donepudi</h3>
-                    <div class="text-muted job" itemprop="jobTitle">Full Stack Engineer</div>
-                  </div>
+  <body>
+    <div class="page">
 
-                    <div class="text-muted info" itemprop="address" style="font-size:0.9em">Hyderabad, India</div>
+      <!-- ─── SIDEBAR ─── -->
+      <aside class="sidebar">
 
-                    <div class="detail">
-                      <span class="info">
-                        <a href="mailto:hi@sandeepdonepudi.in" class="link-disguise" itemprop="email" target="_blank">hi@sandeepdonepudi.in</a>
-                      </span>
-                    </div>
+        <div class="profile">
+          <h1 class="name" itemprop="name">Sandeep Donepudi</h1>
+          <p class="role" itemprop="jobTitle">Full Stack Engineer</p>
+        </div>
+
+        <div class="contact">
+          <a href="mailto:hi@sandeepdonepudi.in" class="contact-row" itemprop="email">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67zM22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+            <span>hi@sandeepdonepudi.in</span>
+          </a>
+          <a href="https://sandeepdonepudi.in" class="contact-row" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>sandeepdonepudi.in</span>
+          </a>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+            <span>Hyderabad, India</span>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a href="https://github.com/skdonepudi" class="social-link" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            <span>skdonepudi</span>
+          </a>
+          <a href="https://www.linkedin.com/in/skdonepudi" class="social-link" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>skdonepudi</span>
+          </a>
+          <a href="https://x.com/skdonepudi" class="social-link" target="_blank" rel="noopener noreferrer" title="X">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span>skdonepudi</span>
+          </a>
+          <a href="https://instagram.com/sandeep_donepudi" class="social-link" target="_blank" rel="noopener noreferrer" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span>sandeep_donepudi</span>
+          </a>
+          <a href="https://sandeepdonepudi.in" class="social-link" target="_blank" rel="noopener noreferrer" title="Portfolio">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>sandeepdonepudi.in</span>
+          </a>
+        </div>
 
 
-                </div>
-
-              <div class="social-links">
-                  <a class="social-link icon" href="https://github.com/skdonepudi" target="_blank">
-                    <span class="iconify" data-icon="ri:github-fill"></span>
-                    <!--<span class="social-link-text print-only">skdonepudi</span>-->
-                  </a>
-                  <a class="social-link icon" href="https://www.linkedin.com/in/skdonepudi" target="_blank">
-                    <span class="iconify" data-icon="ri:linkedin-box-fill"></span>
-                    <!--<span class="social-link-text print-only">skdonepudi</span>-->
-                  </a>
-                  <a class="social-link icon" href="https://x.com/skdonepudi" target="_blank">
-                    <span class="iconify" data-icon="ri:twitter-x-line"></span>
-                    <!--<span class="social-link-text print-only">skdonepudi</span>-->
-                  </a>
-                  <a class="social-link icon" href="https://instagram.com/sandeep_donepudi" target="_blank">
-                    <span class="iconify" data-icon="ri:instagram-line"></span>
-                    <!--<span class="social-link-text print-only">sandeep_donepudi</span>-->
-                  </a>
-                  <a class="social-link icon" href="https://sandeepdonepudi.in" target="_blank">
-                    <span class="iconify" data-icon="ri:global-line"></span>
-                    <!--<span class="social-link-text print-only">sandeepdonepudi.in</span>-->
-                  </a>
-              </div>
+        <div class="sidebar-section">
+          <h2 class="sidebar-section-title">Skills</h2>
+          <div class="skill-group">
+            <span class="skill-cat">Frontend</span>
+            <div class="skill-tags">
+              <span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span>
             </div>
           </div>
-
-        </div>
-      </section>
-
-      <section class="row page">
-        <div class="card-wrapper">
-          <div class="card background-card">
-
-            <h4 id="about"></span> <span class="title">About</span> </h4>
-            <div class="card-nested" itemprop="description">
-              <p> Experienced Frontend Engineer with 4+ years of expertise in building responsive, scalable web applications using React, Redux and Next.js. Passionate about building elegant, performant UIs and exploring bleeding-edge tech like AI integrations and blockchain-based applications. Strong believer in clean code, collaborative problem solving, and purposeful design. </p>
+          <div class="skill-group">
+            <span class="skill-cat">Backend/Infra</span>
+            <div class="skill-tags">
+              <span class="tag">Node.js</span><span class="tag">Firebase</span><span class="tag">Supabase</span><span class="tag">Google Cloud</span><span class="tag">AWS</span><span class="tag">Vercel</span>
             </div>
-
-            <div id="work-projects-group">
-              <div id="projects">
-                <h4><span class="title">Projects</span></h4>
-                <div class="list-unstyled projects">
-                  <div class="project-table">
-                    <li class="card-nested ">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm" itemprop="award">
-                          <strong>Buildspace NFT Staking</strong>&nbsp
-                            <a href="https://github.com/skdonepudi/buildoor-nfts" class='icon' target="_blank">
-                              <span class="iconify" data-icon="ri:github-fill"></span>
-                            </a>
-                            <a href="http://galactic-guardians.vercel.app/" class='icon' target="_blank">
-                              <span class="iconify" data-icon="ri:arrow-right-up-line"></span>
-                            </a>
-                        </p>
-                        <p class="text-muted">
-                          <small> Developed an end-to-end web app for minting and staking Solana NFTs. Integrated smart contracts using Rust and Anchor. </small>
-                        </p>
-                          <p class="github-stars">
-                            <span class="iconify" data-icon="ri:star-fill"></span>
-                            <span class="stars" data-gh-api="https://api.github.com/repos/skdonepudi/buildoor-nfts">2</span>
-                          </p>
-                      </div>
-                    </li>
-                    <li class="card-nested ">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm" itemprop="award">
-                          <strong>Screenlytics</strong>&nbsp
-                            <a href="https://screenlytics.app" class='icon' target="_blank">
-                              <span class="iconify" data-icon="ri:arrow-right-up-line"></span>
-                            </a>
-                        </p>
-                        <p class="text-muted">
-                          <small> Privacy-first Android app for screen time analytics. All processing runs on-device using Android&#x27;s UsageStatsManager — no account, no data leaves the device. </small>
-                        </p>
-                      </div>
-                    </li>
-                    <li class="card-nested ">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm" itemprop="award">
-                          <strong>Lazy Whale</strong>&nbsp
-                            <a href="https://github.com/skdonepudi/lazywhale" class='icon' target="_blank">
-                              <span class="iconify" data-icon="ri:github-fill"></span>
-                            </a>
-                            <a href="https://lazywhale.vercel.app/" class='icon' target="_blank">
-                              <span class="iconify" data-icon="ri:arrow-right-up-line"></span>
-                            </a>
-                        </p>
-                        <p class="text-muted">
-                          <small> Built a dashboard using Supabase &amp; Next.js that tracks and analyzes Solana &amp; Ethereum NFT whale activity in real-time. </small>
-                        </p>
-                          <p class="github-stars">
-                            <span class="iconify" data-icon="ri:star-fill"></span>
-                            <span class="stars" data-gh-api="https://api.github.com/repos/skdonepudi/lazywhale">1</span>
-                          </p>
-                      </div>
-                    </li>
-                  </div>
-                    <li class="card-nested text-muted">
-                      <a href="https://sandeepdonepudi.in/projects" target="_blank">More Projects...</a>
-                    </li>
-                  <div class='px10'></div>
-                </div>
-              </div>
-
-              <div id="work-experience">
-                <h4> <span class="title">Work Experience</span> </h4>
-                <ul class="list-unstyled">
-                    <li class="card-nested relax">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm">
-                          <strong><a href="https://strawhat.xyz/" target="_blank">Straw Hat Labs</a></strong>
-                          <span class="text-muted" style="margin-left: 0.3em">Full Stack Engineer</span>
-                        </p>
-                        <p class="text-muted">
-                          <small>
-                            <span class="space-right"> May 2025 - Present | Bengaluru, India</span>
-                          </small>
-                        </p>
-                        <p></p>
-                          <ul class='highlight'>
-                              <li> Leading development of Web3 applications and Chrome extension for Solana-based trust network </li>
-                              <li> Architecting and implementing full-stack solutions with focus on scalability and security </li>
-                          </ul>
-                      </div>
-
-                    </li>
-                    <li class="card-nested relax">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm">
-                          <strong><a href="https://fortahealth.com" target="_blank">Forta Health</a></strong>
-                          <span class="text-muted" style="margin-left: 0.3em">Frontend Engineer</span>
-                        </p>
-                        <p class="text-muted">
-                          <small>
-                            <span class="space-right"> Apr 2023 - Mar 2025 | Remote, USA</span>
-                          </small>
-                        </p>
-                        <p></p>
-                          <ul class='highlight'>
-                              <li> Improved frontend performance by 30% through strategic refactoring and bottleneck identification. </li>
-                              <li> Built mobile-friendly reusable UI components and optimized API calls to reduce load times by 40%. </li>
-                              <li> Led development of an AI-integrated React POC streamlining clinical workflows. </li>
-                              <li> Collaborated across backend and QA teams, cutting down bugs by 25%. </li>
-                          </ul>
-                      </div>
-
-                    </li>
-                    <li class="card-nested relax">
-                      <div class="content has-sidebar">
-                        <p class="clear-margin-sm">
-                          <strong>Straw Hat Labs</strong>
-                          <span class="text-muted" style="margin-left: 0.3em">Research Engineer</span>
-                        </p>
-                        <p class="text-muted">
-                          <small>
-                            <span class="space-right"> Jun 2021 - Mar 2023 | Bengaluru, India</span>
-                          </small>
-                        </p>
-                        <p></p>
-                          <ul class='highlight'>
-                              <li> Delivered 2 Solana Blockchain dApps, integrating smart contracts and frontend features. </li>
-                              <li> Built Flutter-based mobile applications with DeFi integrations (Orca, Raydium). </li>
-                              <li> Led team development of multiple POCs for blockchain and NFT platforms. </li>
-                          </ul>
-                      </div>
-
-                    </li>
-                </ul>
-              </div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-cat">Mobile</span>
+            <div class="skill-tags">
+              <span class="tag">Flutter</span><span class="tag">React Native</span>
             </div>
-
-            <h4 id="skills"><span class="title">Stacks</span> </h4>
-            <div class="card-nested" itemprop="description">
-              <div class="skill-table">
-                    <div class='name'>Frontend</div> 
-                    <div>TypeScript, JavaScript, React, Next.js, Node.js</div>
-                    <div class='name'>Backend/Infra</div> 
-                    <div>Node.js, Firebase, Supabase, Google Cloud, AWS, Vercel</div>
-                    <div class='name'>Mobile</div> 
-                    <div>Flutter, React Native</div>
-                    <div class='name'>Web3</div> 
-                    <div>Solana, Anchor, Rust, Web3.js</div>
-                    <div class='name'>Languages</div> 
-                    <div>Python, C/C++, Go</div>
-              </div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-cat">Web3</span>
+            <div class="skill-tags">
+              <span class="tag">Solana</span><span class="tag">Anchor</span><span class="tag">Rust</span><span class="tag">Web3.js</span>
             </div>
-            <div class='px10'></div>
-
-            <div id="education">
-              <h4><span class="title">Education</span></h4>
-              <ul class="list-unstyled">
-                  <li class="card-nested">
-                    <div class="content has-sidebar">
-                      <p class="clear-margin-sm">
-                        <strong> Computer Science and Engineering, Bachelor of Technology</strong>,&nbsp;
-                        Rajiv Gandhi University of Knowledge Technologies, Nuzvid
-                      </p>
-                      <p class="text-muted clear-margin-sm">
-                        <small>
-                          Sep 2017 -  Jun 2021 
-                        </small>
-                      </p>
-                      <div></div>
-                      <i></i>
-                      <div class="space-top labels">
-                        
-                      </div>
-                    </div>
-                  </li>
-              </ul>
-            </div>
-
-
-
-
-
-
-
-            <h4 id="languages"><span class="title">Languages</span> </h4>
-            <p class="card-nested">
-                <span class="enumeration"><strong>Telugu</strong> (Native speaker)</span>
-                <span class="enumeration"><strong>English</strong> (Fluent)</span>
-                <span class="enumeration"><strong>Hindi</strong> (Intermediate)</span>
-            </p>
-
-            <div style="text-align:center">
-              <div class="detail no-print" style="font-size:1.5rem;margin-top:2rem;">
-                <a href="https://resume.sandeepdonepudi.in/resume.pdf" class="info" itemprop="pdf" target="_blank">
-                  PDF Version
-                </a>
-              </div>
-               <div class="detail print-only" style="font-size:1.5rem;margin-top:2rem;" >
-                <a href="https://resume.sandeepdonepudi.in" class="info" itemprop="pdf" target="_blank">
-                  Online Version
-                </a>
-              </div>
-              <div style="opacity:0.7; font-size:1.2rem;margin-top:1rem;">Last updated at May 9th 2026, 1:48:33 pm</div>
+          </div>
+          <div class="skill-group">
+            <span class="skill-cat">Languages</span>
+            <div class="skill-tags">
+              <span class="tag">Python</span><span class="tag">C/C++</span><span class="tag">Go</span>
             </div>
           </div>
         </div>
-      </section>
+
+        <div class="sidebar-section">
+          <h2 class="sidebar-section-title">Languages</h2>
+          <div class="lang-row">
+            <span class="lang-name">Telugu</span>
+            <span class="lang-level">Native speaker</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">English</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Hindi</span>
+            <span class="lang-level">Intermediate</span>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ─── MAIN ─── -->
+      <main class="main">
+
+        <section class="section">
+          <h2 class="section-title">About</h2>
+          <p class="about-text" itemprop="description">Experienced Frontend Engineer with 4+ years of expertise in building responsive, scalable web applications using React, Redux and Next.js. Passionate about building elegant, performant UIs and exploring bleeding-edge tech like AI integrations and blockchain-based applications. Strong believer in clean code, collaborative problem solving, and purposeful design.</p>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Experience</h2>
+          <div class="exp-entry">
+            <div class="exp-meta">
+              <div class="exp-left">
+                <span class="exp-role">Full Stack Engineer</span>
+                <span class="exp-company">
+                  <a href="https://strawhat.xyz/" target="_blank" rel="noopener">Straw Hat Labs</a>
+                  <span class="exp-location">· Bengaluru, India</span>
+                </span>
+              </div>
+              <span class="exp-period">May 2025 – Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Leading development of Web3 applications and Chrome extension for Solana-based trust network</li>
+              <li>Architecting and implementing full-stack solutions with focus on scalability and security</li>
+            </ul>
+          </div>
+          <div class="exp-entry">
+            <div class="exp-meta">
+              <div class="exp-left">
+                <span class="exp-role">Frontend Engineer</span>
+                <span class="exp-company">
+                  <a href="https://fortahealth.com" target="_blank" rel="noopener">Forta Health</a>
+                  <span class="exp-location">· Remote, USA</span>
+                </span>
+              </div>
+              <span class="exp-period">Apr 2023 – Mar 2025</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Improved frontend performance by 30% through strategic refactoring and bottleneck identification.</li>
+              <li>Built mobile-friendly reusable UI components and optimized API calls to reduce load times by 40%.</li>
+              <li>Led development of an AI-integrated React POC streamlining clinical workflows.</li>
+              <li>Collaborated across backend and QA teams, cutting down bugs by 25%.</li>
+            </ul>
+          </div>
+          <div class="exp-entry">
+            <div class="exp-meta">
+              <div class="exp-left">
+                <span class="exp-role">Research Engineer</span>
+                <span class="exp-company">
+                  Straw Hat Labs
+                  <span class="exp-location">· Bengaluru, India</span>
+                </span>
+              </div>
+              <span class="exp-period">Jun 2021 – Mar 2023</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Delivered 2 Solana Blockchain dApps, integrating smart contracts and frontend features.</li>
+              <li>Built Flutter-based mobile applications with DeFi integrations (Orca, Raydium).</li>
+              <li>Led team development of multiple POCs for blockchain and NFT platforms.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Projects</h2>
+          <div class="project-grid">
+            <div class="project-entry">
+              <div class="project-header">
+                <span class="project-name">Buildspace NFT Staking</span>
+                <div class="project-links">
+                  <a href="https://github.com/skdonepudi/buildoor-nfts" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+                  <a href="http://galactic-guardians.vercel.app/" target="_blank" rel="noopener" class="project-link">Live ↗</a>
+                </div>
+              </div>
+              <p class="project-desc">Developed an end-to-end web app for minting and staking Solana NFTs. Integrated smart contracts using Rust and Anchor.</p>
+              <span class="tag">Rust</span>
+            </div>
+            <div class="project-entry">
+              <div class="project-header">
+                <span class="project-name">Screenlytics</span>
+                <div class="project-links">
+                  
+                  <a href="https://screenlytics.app" target="_blank" rel="noopener" class="project-link">Live ↗</a>
+                </div>
+              </div>
+              <p class="project-desc">Privacy-first Android app for screen time analytics. All processing runs on-device using Android&#x27;s UsageStatsManager — no account, no data leaves the device.</p>
+              <span class="tag">Flutter</span>
+            </div>
+            <div class="project-entry">
+              <div class="project-header">
+                <span class="project-name">Lazy Whale</span>
+                <div class="project-links">
+                  <a href="https://github.com/skdonepudi/lazywhale" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+                  <a href="https://lazywhale.vercel.app/" target="_blank" rel="noopener" class="project-link">Live ↗</a>
+                </div>
+              </div>
+              <p class="project-desc">Built a dashboard using Supabase &amp; Next.js that tracks and analyzes Solana &amp; Ethereum NFT whale activity in real-time.</p>
+              <span class="tag">TypeScript</span>
+            </div>
+          </div>
+          <a href="https://sandeepdonepudi.in/projects" target="_blank" rel="noopener" class="more-link">More projects →</a>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Education</h2>
+          <div class="edu-entry">
+            <div class="edu-meta">
+              <div class="edu-left">
+                <span class="edu-degree">Bachelor of Technology, Computer Science and Engineering</span>
+                <span class="edu-inst">Rajiv Gandhi University of Knowledge Technologies, Nuzvid</span>
+              </div>
+              <span class="edu-period">Sep 2017 – Jun 2021</span>
+            </div>
+          </div>
+        </section>
+
+        <footer class="resume-footer">
+          <span class="no-print"><a href="https://resume.sandeepdonepudi.in/resume.pdf">PDF version ↓</a></span>
+          <span class="print-only">resume.sandeepdonepudi.in</span>
+          <span>Updated May 9th 2026, 2:01:54 pm</span>
+        </footer>
+
+      </main>
     </div>
-
-    
-    <script>
-      async function updateStars(){
-        await Promise.all(
-          Array.from(document.querySelectorAll('[data-gh-api]'))
-            .map(async (e) => {
-              const api = e.dataset.ghApi
-              const r = await fetch(api)
-              const json = await r.json()
-              if (json.stargazers_count)
-                e.innerText = json.stargazers_count
-              console.info(`${api} - ${json.stargazers_count}`)
-            })
-        )
-      }
-      window.addEventListener('load', updateStars)
-    </script>
   </body>
 </html>
