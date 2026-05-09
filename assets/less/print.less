@@ -1,83 +1,52 @@
 @media print {
-  .name-and-profession .name {
-    margin-top: -2rem;
+  :root {
+    --bg: #fff;
+    --bg-subtle: #fff;
+    --sidebar-bg: #f7f7f7;
+    --text: #111;
+    --text-muted: #444;
+    --text-dim: #777;
+    --border: #ddd;
+    --brand: #c44e08;
+    --tag-bg: #eee;
+    --tag-text: #444;
   }
-  .page {
-    margin-top: -4rem;
-  }
-  .social-links {
-    margin-top: 0.5rem;
-  }
-  body {
-    font-size: 10pt;
-  }
-  a[href]:after {
-    content: none !important;
-  }
-  .pagebreak {
-    page-break-before: always;
-  }
-  .card {
-    border: 0;
-    padding: 0;
-  }
-  .text-muted {
-    color: #777 !important;
-    * {
-      color: inherit !important;
-    }
-  }
-  .container {
-    max-width: 100%;
-    width: 100%;
-  }
-  .contact-details .detail .icon {
-    color: #888 !important;
-  }
-  .labels {
-    display: inline;
-  }
-  .skill-info {
-    margin-left: 0;
-  }
-  .profile-card {
-    text-align: center;
-  }
-  .print-only {
-    display: inherit;
-  }
-  .no-print {
-    display: none;
-  }
-  .project-table {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 0.8rem 1rem;
-  }
-  .highlight {
-    margin-top: -0.3rem;
-  }
-  blockquote {
-    font-size: 100%;
-  }
-  .card-nested {
-    padding: 0.1rem 0 0.1rem 1rem;
 
-    &.relax {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
+  @page { margin: 0.45in 0.4in; }
+
+  body { font-size: 9.5pt; }
+
+  .page {
+    max-width: 100%;
+    min-height: auto;
+    grid-template-columns: 195px 1fr;
   }
-  .skill-table {
-    grid-gap: 0.8rem 0.5rem;
-  }
-  .background-card h4:not(:first-child) {
-    margin-top: 1em;
-  }
-  #work-projects-group {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 2fr 4fr;
-    page-break-after: always;
-  }
+
+  .sidebar { padding: 0 18px 0 0; border-right: 1px solid #ddd; }
+  .main { padding: 0 0 0 24px; }
+
+  a { color: inherit !important; border: none !important; }
+  a[href]:after { content: none !important; }
+
+  .no-print { display: none !important; }
+  .print-only { display: inline !important; }
+
+  .section { margin-bottom: 14px; }
+  .section-title { padding-bottom: 5px; margin-bottom: 10px; }
+
+  .exp-entry { padding-bottom: 10px; margin-bottom: 10px; }
+  .exp-bullets li { font-size: 9pt; }
+
+  .about-text { font-size: 9pt; }
+
+  .project-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
+  .project-entry { background: transparent; padding: 8px 10px; }
+  .project-desc { font-size: 9pt; }
+
+  .profile { margin-bottom: 14px; }
+  .contact { margin-bottom: 10px; }
+  .socials { margin-bottom: 16px; }
+  .sidebar-section { margin-bottom: 14px; }
+
+  .lang-row { padding: 3px 0; }
 }
