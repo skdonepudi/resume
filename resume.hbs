@@ -154,7 +154,7 @@
             <div class="edu-meta">
               <div class="edu-left">
                 <span class="edu-degree">{{studyType}}, {{area}}</span>
-                <span class="edu-inst">{{institution}}</span>
+                <span class="edu-inst">{{#if website}}<a href="{{website}}" target="_blank" rel="noopener">{{institution}}</a>{{else}}{{institution}}{{/if}}</span>
               </div>
               <span class="edu-period">{{startDate}} – {{endDate}}</span>
             </div>
