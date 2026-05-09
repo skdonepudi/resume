@@ -440,23 +440,27 @@ a {
   }
   @page {
     size: A4;
-    margin: 0.28in 0.32in;
+    margin: 0.38in 0.42in;
   }
   body {
-    font-size: 8.5pt;
-    line-height: 1.5;
+    font-size: 9.5pt;
+    line-height: 1.6;
+  }
+  /* About is shown on web; hidden on PDF to free up space */
+  .section-about {
+    display: none !important;
   }
   .page {
     max-width: 100%;
     min-height: auto;
-    grid-template-columns: 175px 1fr;
+    grid-template-columns: 185px 1fr;
   }
   .sidebar {
-    padding: 0 15px 0 0;
+    padding: 0 18px 0 0;
     border-right: 1px solid #ddd;
   }
   .main {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 24px;
   }
   a {
     color: inherit !important;
@@ -473,144 +477,131 @@ a {
   }
   /* Profile */
   .profile {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .name {
-    font-size: 16px;
+    font-size: 17px;
   }
   .role {
-    font-size: 9px;
+    font-size: 9.5px;
   }
   /* Contact & socials */
   .contact {
-    margin-bottom: 8px;
-    gap: 3px;
+    margin-bottom: 10px;
+    gap: 4px;
   }
   .contact-row {
-    font-size: 10px;
-    gap: 5px;
+    font-size: 10.5px;
   }
   .socials {
-    margin-bottom: 12px;
-    gap: 2px;
+    margin-bottom: 16px;
+    gap: 3px;
   }
   .social-link {
-    font-size: 10px;
-    gap: 5px;
+    font-size: 10.5px;
   }
   /* Sidebar sections */
   .sidebar-section {
-    margin-bottom: 10px;
+    margin-bottom: 13px;
   }
   .sidebar-section-title {
-    font-size: 7.5px;
-    padding-bottom: 4px;
-    margin-bottom: 7px;
+    font-size: 8px;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
   }
   .skill-group {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .skill-cat {
-    font-size: 8.5px;
-    margin-bottom: 3px;
+    font-size: 9px;
+    margin-bottom: 4px;
   }
   .tag {
-    font-size: 9px;
-    padding: 1px 5px;
+    font-size: 9.5px;
+    padding: 1px 6px;
   }
   .lang-row {
-    padding: 2px 0;
-    font-size: 10px;
+    padding: 3px 0;
+    font-size: 10.5px;
   }
   .lang-level {
-    font-size: 9px;
+    font-size: 9.5px;
   }
   /* Section headers */
   .section {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   .section-title {
-    font-size: 7.5px;
-    padding-bottom: 4px;
-    margin-bottom: 8px;
-  }
-  .section-title::before {
-    height: 9px;
-  }
-  /* About */
-  .about-text {
-    font-size: 8pt;
-    line-height: 1.6;
+    font-size: 8px;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
   }
   /* Experience */
   .exp-entry {
-    padding-bottom: 8px;
-    margin-bottom: 8px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
   }
   .exp-entry:last-child {
     padding-bottom: 0;
     margin-bottom: 0;
   }
   .exp-role {
-    font-size: 12px;
+    font-size: 13px;
   }
   .exp-company {
-    font-size: 10.5px;
+    font-size: 11px;
   }
   .exp-period {
-    font-size: 9.5px;
-    padding-top: 2px;
+    font-size: 10px;
   }
   .exp-bullets {
-    gap: 2px;
+    gap: 3px;
+    margin-top: 6px;
   }
   .exp-bullets li {
-    font-size: 8pt;
-    line-height: 1.5;
-  }
-  .exp-bullets li::before {
-    font-size: 13px;
+    font-size: 9pt;
+    line-height: 1.55;
   }
   /* Projects */
   .project-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-bottom: 6px;
+    gap: 8px;
+    margin-bottom: 8px;
   }
   .project-entry {
     background: transparent;
-    padding: 6px 8px;
+    padding: 8px 10px;
   }
   .project-name {
-    font-size: 11px;
+    font-size: 11.5px;
   }
   .project-desc {
-    font-size: 8pt;
-    margin-bottom: 4px;
-    line-height: 1.5;
+    font-size: 9pt;
+    margin-bottom: 5px;
+    line-height: 1.55;
   }
   .project-link {
-    font-size: 9px;
+    font-size: 9.5px;
   }
   .more-link {
-    font-size: 9.5px;
-    margin-top: 2px;
+    font-size: 10px;
+    margin-top: 3px;
   }
   /* Education */
   .edu-degree {
-    font-size: 11.5px;
+    font-size: 12px;
   }
   .edu-inst {
-    font-size: 10.5px;
+    font-size: 11px;
   }
   .edu-period {
-    font-size: 9.5px;
+    font-size: 10px;
   }
   /* Footer */
   .resume-footer {
-    margin-top: 10px;
-    padding-top: 8px;
-    font-size: 9px;
+    margin-top: 14px;
+    padding-top: 10px;
+    font-size: 9.5px;
   }
 }
 </style>
@@ -713,7 +704,7 @@ a {
       <!-- ─── MAIN ─── -->
       <main class="main">
 
-        <section class="section">
+        <section class="section section-about">
           <h2 class="section-title">About</h2>
           <p class="about-text" itemprop="description">Experienced Frontend Engineer with 4+ years of expertise in building responsive, scalable web applications using React, Redux and Next.js. Passionate about building elegant, performant UIs and exploring bleeding-edge tech like AI integrations and blockchain-based applications. Strong believer in clean code, collaborative problem solving, and purposeful design.</p>
         </section>
@@ -829,7 +820,7 @@ a {
         <footer class="resume-footer">
           <span class="no-print"><a href="https://resume.sandeepdonepudi.in/resume.pdf">PDF version ↓</a></span>
           <span class="print-only">resume.sandeepdonepudi.in</span>
-          <span>Updated May 9th 2026, 2:25:37 pm</span>
+          <span>Updated May 9th 2026, 2:32:58 pm</span>
         </footer>
 
       </main>
